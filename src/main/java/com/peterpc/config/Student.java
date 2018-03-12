@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-
+//asdasd
 //Skal omskrives til DB, placeholder prototype class
 public class Student {
 
