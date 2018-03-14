@@ -2,15 +2,13 @@ package com.peterpc.controller;
 
 import com.peterpc.config.Student;
 import com.peterpc.config.UserServiceImpl;
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -18,11 +16,15 @@ import java.util.ArrayList;
 public class DefaultController {
 
 
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     UserServiceImpl userService;
+
+    @RequestMapping(path = "/calendar", method = RequestMethod.GET)
+    String calendar(Model model) {
+        return "calendar";
+    }
 
     @GetMapping("/admin")
     public String index(Model model) {
@@ -32,6 +34,7 @@ public class DefaultController {
         log.info("index action ended...");
         return "admin";
     }
+
 
     @GetMapping("/create")
     public String create(Model model) {
@@ -50,6 +53,7 @@ public class DefaultController {
         model.addAttribute("students", userService.fetchAllUsers());
         return "redirect:/";
     }
+
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") int id, Model model) {
@@ -136,9 +140,11 @@ public class DefaultController {
 
 
     @GetMapping("/user")
-    public String user() {
+    public String user(Model model) {
+        model.addAttribute("student", new Student());
         return "/user";
     }
+
 
     @GetMapping("/about")
     public String about() {

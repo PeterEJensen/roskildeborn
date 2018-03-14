@@ -26,6 +26,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:5.1.45" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bower:moment:2.19.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bower:fullcalendar:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bower:jquery:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.3.RELEASE" level="project" />
@@ -92,7 +96,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.7" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:jquery:1.11.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:5.1.41" level="project" />
   </component>
 </module>

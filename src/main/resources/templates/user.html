@@ -1,22 +1,31 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
+<!-- ************************************************************ -->
+<!-- *********** REDUNTANT CLASS, IS NOT RE DIRECTED TO ********* -->
+<!-- ************************************************************ -->
 
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
 
     <div class="starter-template">
-        <h1>USER PLACEHOLDER</h1>
+        <h1>SE NUVÆRENDE VAGTPLAN</h1>
 
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
-
+        <h1 th:inline="text">Hej [[${#httpServletRequest.remoteUser}]]!</h1>
     </div>
 
+
+    <p>Hvem har vagten?</p>
+    <form method="Post" th:action="@{/user}">
+
+        <input type="date" th:field="${student.enrollmentDate}"/>
+    </form>
+
+    <input class="btn btn-primary" type="submit" value="Tjek"/>
 
 
 </div>

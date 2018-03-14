@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ArrayList<Student> fetchAllUsers(){
+    public ArrayList<Student> fetchAllUsers() {
         return students;
     }
 
