@@ -8,20 +8,19 @@
 </head>
 <body>
 <div class="container">
-    <h1>Edit student</h1>
+    <h1>Rediger</h1>
     <form method="Post" th:action="@{/edit}">
-        <!-- <p>Enter student id</p>
-         <input   type="number" name="ID" th:field="${student.studentID}"  />-->
-        <p>Enter first name</p>
+
+        <p>Fornavn</p>
         <input type="text" th:field="${student.firstName}"/>
-        <p>Enter last name</p>
+        <p>Efternavn</p>
         <input type="text" th:field="${student.lastName}"/>
-        <p>Enter enrollementdate</p>
+        <p>Dato for ændring</p>
         <input type="date" th:field="${student.enrollmentDate}"/>
-        <p>Enter cpr</p>
+        <p>CPR</p>
         <input type="text" th:field="${student.cpr}"/>
 
-        <input class="btn btn-primary" type="submit" value="Send"/>
+        <input class="btn btn-primary" type="submit" value="Gem"/>
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

@@ -33,6 +33,27 @@ public class RestWebController {
             event.setStart("2018-03-18");
             events.add(event);
 
+            event = new Event();
+            event.setTitle("Jeppe vagt");
+            event.setStart("2018-03-05");
+            events.add(event);
+
+            event = new Event();
+            event.setTitle("Fida vagt");
+            event.setStart("2018-03-10");
+            events.add(event);
+
+            event = new Event();
+            event.setTitle("Jannick vagt");
+            event.setStart("2018-03-13");
+            events.add(event);
+
+            event = new Event();
+            event.setTitle("Hossein vagt");
+            event.setStart("2018-03-15");
+            events.add(event);
+
+
 
             ObjectMapper mapper = new ObjectMapper();
             jsonMsg = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(events);

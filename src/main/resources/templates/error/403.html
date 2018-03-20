@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -11,9 +11,14 @@
 
     <div class="starter-template">
         <h1>403 - Adgang Nægtet</h1>
-        <div th:inline="text">Brugeren '[[${#httpServletRequest.remoteUser}]]' har ikke adgang til at se denne side.
+
+
+        <div th:inline="text">Brugeren <span sec:authentication="name"></span> har ikke adgang til at se denne side.
         </div>
+        <span sec:authorize="isAuthenticated()">
+            </span>
     </div>
+
 
 </div>
 <!-- /.container -->
