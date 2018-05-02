@@ -27,8 +27,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/about").permitAll()
-                .antMatchers("/admin/**", "/delete", "/create", "/calendar").hasAnyRole("ADMIN")
+                .antMatchers("/", "/home", "/about", "/index", "/register", "/confirm").permitAll()
+                .antMatchers("/admin/**", "/delete", "/create", "/calendar", "/post").hasAnyRole("ADMIN")
                 .antMatchers("/user/**", "/calendar").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
@@ -46,17 +46,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select username,password, enabled from user where username=?")
+                .usersByUsernameQuery("select username,password, enabled from users where username=?")
+                //.usersByUsernameQuery("select email,enabled, password from user where email=?");
                 .authoritiesByUsernameQuery("select username, role from user_role where username=?");
     }
-   /* @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
-                .and()
-                .withUser("admin").password("password").roles("ADMIN");
-    }*/
-
 
 }

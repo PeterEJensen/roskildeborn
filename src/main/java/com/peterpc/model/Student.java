@@ -1,4 +1,4 @@
-package com.peterpc.config;
+package com.peterpc.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

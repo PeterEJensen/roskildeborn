@@ -1,15 +1,18 @@
 package com.peterpc.controller;
 
-import com.peterpc.config.Student;
-import com.peterpc.config.UserServiceImpl;
-import org.apache.catalina.User;
+import com.peterpc.config.Post;
+import com.peterpc.config.UserService;
+import com.peterpc.model.Student;
+//import com.peterpc.config.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Controller
@@ -19,42 +22,62 @@ public class DefaultController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @RequestMapping(path = "/calendar", method = RequestMethod.GET)
     String calendar(Model model) {
         return "calendar";
     }
 
+    @RequestMapping(value="/post", method=RequestMethod.GET)
+    public String post(Post post) {
+        return "post";
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    public String addNewPost(@Valid Post post, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "post";
+        }
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("content", post.getContent());
+        return "index";
+    }
+
+
     @GetMapping("/admin")
-    public String index(Model model) {
+    public String admin(Model model) {
         log.info("index action called...");
-        model.addAttribute("students", userService.fetchAllUsers());
+       // model.addAttribute("students", userService.fetchAllUsers());
 
         log.info("index action ended...");
         return "admin";
     }
 
 
+
+
+/*
     @GetMapping("/create")
     public String create(Model model) {
         log.info("create action called...");
         model.addAttribute("student", new Student());
         //model.addAttribute("students", userService.fetchAllUsers());
         return "create";
-    }
+    }*/
+/*
 
     @PostMapping("/create")
     public String create(@ModelAttribute Student student, Model model) {
         log.info("create post action called...");
-        String index = Integer.toString(userService.fetchAllUsers().size());
+      /*  String index = Integer.toString(userService.fetchAllUsers().size());
         student.setStudentId(Integer.parseInt(index));
         userService.fetchAllUsers().add(student);
-        model.addAttribute("students", userService.fetchAllUsers());
-        return "redirect:/";
-    }
+        model.addAttribute("students", userService.fetchAllUsers());*/
+        //return "redirect:/";
+    //}
 
-
+/*
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") int id, Model model) {
         log.info("details action called...");
@@ -126,17 +149,23 @@ public class DefaultController {
             student.setStudentId(student.getStudentId() - 1);
         }
     }
+*/
 
-
-    @GetMapping("/")
-    public String home1() {
-        return "/home";
+   @RequestMapping(value="/", method=RequestMethod.GET)
+    public String index(Post post) {
+        return "index";
+    }
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String ShowPost(@Valid Post post, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "index";
+        }
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("content", post.getContent());
+        return "index";
     }
 
-  /*  @GetMapping("/home")
-    public String home() {
-        return "/home";
-    }*/
+
 
 
     @GetMapping("/user")

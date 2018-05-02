@@ -32,11 +32,17 @@
         Duis volutpat lacinia odio ac tincidunt. Integer finibus leo nec magna venenatis, eu ultricies leo elementum.
     </p>
 
+    <p>
+    <p th:text="${title}" />
+
+    <p th:text="${content}" />
+    </p>
 
 </div>
 <!-- /.container -->
 
-<div th:replace="fragments/footer :: footer"/>
 
+
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>
